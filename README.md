@@ -31,6 +31,31 @@ LoRa/
 - **jSerialComm-2.10.4.jar** (bereits im Projekt enthalten)
 - **Pi4J Core** (`/opt/pi4j/lib/pi4j-core.jar`) - nur für Sender-Anwendung
 
+## Berechtigungen für serielle Ports (Linux)
+
+⚠️ **Wichtig:** Unter Linux benötigen Sie Berechtigungen für den Zugriff auf serielle Ports!
+
+### Option 1: Als Root ausführen
+```bash
+sudo java -jar build/empfangen/lora-empfangen.jar
+sudo java -jar build/senden/lora-senden.jar
+```
+
+### Option 2: Benutzer zur dialout-Gruppe hinzufügen (empfohlen)
+```bash
+sudo usermod -a -G dialout $USER
+```
+**Nach diesem Befehl müssen Sie sich ab- und wieder anmelden!**
+
+### Berechtigungen prüfen
+```bash
+# Serielle Ports anzeigen
+ls -l /dev/ttyUSB* /dev/ttyACM*
+
+# Ihre Gruppenmitgliedschaft prüfen
+groups
+```
+
 ## Build-Prozess
 
 Das Projekt verwendet zwei separate Build-Scripts, die jeweils eine eigenständige JAR-Datei mit allen eingebetteten Abhängigkeiten (Fat-JAR) erstellen.
@@ -107,6 +132,12 @@ Bei Build-Fehlern zeigen die Scripts detaillierte Fehlermeldungen an. Häufige P
 - JDK nicht installiert oder nicht im PATH
 - Nicht ausführbare Script-Dateien (mit `chmod +x` beheben)
 - Syntaxfehler in Java-Dateien
+
+### Häufige Runtime-Probleme
+- **`NoSuchElementException: No line found`**: Meist ein Berechtigungsproblem für serielle Ports
+  - Lösung: Als root ausführen oder Benutzer zur `dialout`-Gruppe hinzufügen
+- **`Port kann nicht geöffnet werden`**: Port bereits in Verwendung oder keine Berechtigung
+- **`Port nicht gefunden`**: Gerät nicht angeschlossen oder falscher Port gewählt
 
 ## Lizenz
 
