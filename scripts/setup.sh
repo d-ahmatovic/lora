@@ -8,7 +8,7 @@ raspi-config nonint do_serial_hw 0
 raspi-config nonint do_serial_cons 1
 
 # Install tools
-apt install i2c-tools
+apt install i2c-tools openjdk-17-jdk-headless -y
 
 # Install wiringpi
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
