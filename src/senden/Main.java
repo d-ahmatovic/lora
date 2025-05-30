@@ -2,13 +2,14 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import com.fazecast.jSerialComm.SerialPort;
 
+
 public class Main
 {
     private static final int Key = 3;
 
     public static void main(String[] args)
     {
-        int selection = GetSerialPortSelection(SerialPort.getCommPorts());
+        int selection = Selection.GetSerialPortSelection(SerialPort.getCommPorts());
 
         if (selection == -1)
         {
