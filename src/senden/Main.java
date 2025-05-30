@@ -32,10 +32,6 @@ public class Main
             comPort.closePort();
         }
     }
-    
-    private static int GetSerialPortSelection(SerialPort[] ports) {
-        return Selection.getSerialPortSelection(ports);
-    }
 
     private static void Senden(PrintWriter sensorWriter) throws InterruptedException {
         try
