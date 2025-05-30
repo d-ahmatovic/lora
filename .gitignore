@@ -1,1 +1,24 @@
+# Klassen-Dateien
 *.class
+
+# Build-Verzeichnisse
+build/
+*/build/
+
+# JAR-Dateien (außer Abhängigkeiten im src-Verzeichnis)
+*.jar
+!src/*.jar
+
+# Temporäre Dateien
+*.tmp
+*.temp
+
+# IDE-Dateien
+.idea/
+.vscode/
+*.iml
+*.eclipse
+
+# OS-spezifische Dateien
+.DS_Store
+Thumbs.db
